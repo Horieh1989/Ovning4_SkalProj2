@@ -1,9 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace SkalProj_Datastrukturer_Minne
 {
     class Program
     {
+
+
+
         /// <summary>
         /// The main method, vill handle the menues for the program
         /// </summary>
@@ -57,34 +62,66 @@ namespace SkalProj_Datastrukturer_Minne
             }
         }
 
-        /// <summary>
-        /// Examines the datastructure List
-        /// </summary>
-        static void ExamineList()
-        {
-            /*
-             * Loop this method untill the user inputs something to exit to main menue.
-             * Create a switch statement with cases '+' and '-'
-             * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
-             * '-': Remove the rest of the input from the list (The user could write -Adam and "Adam" would be removed from the list)
-             * In both cases, look at the count and capacity of the list
-             * As a default case, tell them to use only + or -
-             * Below you can see some inspirational code to begin working.
-            */
-
-            //List<string> theList = new List<string>();
-            //string input = Console.ReadLine();
-            //char nav = input[0];
-            //string value = input.substring(1);
-
-            //switch(nav){...}
-        }
-
-        /// <summary>
-        /// Examines the datastructure Queue
-        /// </summary>
         static void ExamineQueue()
         {
+            Queue<string> items = new Queue<string>();
+
+            while (true)
+            {
+                Console.WriteLine("Chose one option: ");
+                Console.WriteLine("1.Enqueue");
+                Console.WriteLine("2.Dequeue");
+                Console.WriteLine("3.Exit");
+
+                if (int.TryParse(Console.ReadLine(), out int choice)) ;//i return the string to the int and,take it with out and put it in choice
+                switch (choice)
+                {
+                    case 1:
+
+                        Enqueue(items);
+                        break;
+                    case 2:
+                        Dequeue(items);
+                        break;
+                    case 3:
+                        Environment.Exit(0);
+                        break;
+                    default:
+
+                        Console.WriteLine(" you add the wrong option! Enter between 1,2,3 options. ");
+                        break;
+                }
+
+
+
+            }
+            static void Enqueue(Queue<string> items)
+
+            {
+
+                Console.WriteLine("Enter your name: ");
+                string customer = Console.ReadLine();
+                items.Enqueue(customer);
+
+                Console.WriteLine($"{customer} added to the list.");
+
+
+            }
+
+            static void Dequeue(Queue<string> items)
+
+            {
+                if (items.Count == 0)// we check if the list is empty.
+                {
+                    Console.WriteLine("no name is in the list");
+                }
+
+                string customer2 = items.Dequeue();
+                Console.WriteLine($"{customer2}is dequeued from the queue");
+
+            }
+
+
             /*
              * Loop this method untill the user inputs something to exit to main menue.
              * Create a switch with cases to enqueue items or dequeue items
@@ -92,11 +129,40 @@ namespace SkalProj_Datastrukturer_Minne
             */
         }
 
-        /// <summary>
-        /// Examines the datastructure Stack
-        /// </summary>
         static void ExamineStack()
+
         {
+            Stack<string> mycutomer = new stack<string>();
+
+            while (true)
+            {
+                Console.WriteLine("Chose one option: ");
+                Console.WriteLine("1.push");
+                Console.WriteLine("2.pop");
+                Console.WriteLine("3.Exit");
+
+                if (int.TryParse(Console.ReadLine(), out int choice)) ;//i return the string to the int and,take it with out and put it in choice
+                switch (choice)
+                {
+                    case 1:
+
+                        push(mycutomer);
+                        break;
+                    case 2:
+                        pop(mycutomer);
+                        break;
+                    case 3:
+                        Environment.Exit(0);
+                        break;
+                    default:
+
+                        Console.WriteLine(" you add the wrong option! Enter between 1,2,3 options. ");
+                        break;
+                }
+
+
+
+            }
             /*
              * Loop this method until the user inputs something to exit to main menue.
              * Create a switch with cases to push or pop items
@@ -104,8 +170,50 @@ namespace SkalProj_Datastrukturer_Minne
             */
         }
 
+        private static void push(Stack<string> mycutomer)
+        {
+            Console.WriteLine("Add your name:");
+            string cusomer1 = Console.ReadLine();
+
+            mycutomer.Push(cusomer1);
+            Console.WriteLine($" {cusomer1} added to the list)");
+
+
+            foreach (string customer in mycutomer)
+            { Console.WriteLine(customer); }
+
+
+        }
+
+        private static void pop(Stack<string> mycutomer)
+        {
+            Console.WriteLine("add the name :");
+            string customer2 = Console.ReadLine();
+
+            while (mycutomer.Count != 0)
+            {
+                mycutomer.Push(customer2.pop())
+        //    }
+
         static void CheckParanthesis()
         {
+                    static bool IfParanthesisAreCorrect(string input);
+                    {
+                        stack<char> parantes = new stack<char>();
+                        foreach (char item in parantes )
+                        {
+                            if (item =='('|| item=='['|| item == '{')
+                            {
+                                parantes.Push(item);
+                            }
+                            else if (item==')'|| item==']'|| item =='}')
+                            {
+                                parantes.
+                            }
+                        }
+                    }
+                   
+                    
             /*
              * Use this method to check if the paranthesis in a string is Correct or incorrect.
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
@@ -114,6 +222,6 @@ namespace SkalProj_Datastrukturer_Minne
 
         }
 
-    }
-}
 
+
+       
